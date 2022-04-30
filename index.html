@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <title>Round Timer</title>
+        <script defer src="scripts/app.js"></script>
+    </head>
+
+    <body class="body">
+        <section class="timer-section">
+            <article class="timer-ring-container">
+                <svg class="timer-ring-svg">
+                    <circle class="ring" />
+                </svg>
+            </article>
+
+            <article class="timer-body">
+                <input type="number" class="input-time input--hours" value="00" />
+                <span>:</span>
+                <input type="number" class="input-time input--minutes" value="00" />
+                <span>:</span>
+                <input type="number" class="input-time input--seconds" value="20" />
+            </article>
+        </section>
+
+        <section class="buttons-section">
+            <button class="timer-button timer-button--start">Start</button>
+            <button class="timer-button timer-button--pause">Pause</button>
+            <button class="timer-button timer-button--stop">Stop</button>
+        </section>
+    </body>
+</html>

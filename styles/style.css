@@ -1,0 +1,157 @@
+:root {
+    --stroke-color: hsl(136, 54%, 43%);
+    --ring-svg-size: 250px;
+    --ring-stroke-size: 10px;
+    --ring-radius: calc(var(--ring-svg-size) / 2 - var(--ring-stroke-size) * 2);
+}
+
+html {
+    font-size: 12px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+    background: hsl(249, 41%, 3%);
+}
+
+.timer-section {
+    display: grid;
+    position: relative;
+    height: calc(var(--ring-svg-size) + 50px);
+    width: calc(var(--ring-svg-size) + 50px);
+    margin: 1rem auto;
+}
+
+.timer-ring-container,
+.timer-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.timer-ring-svg {
+    transform: rotateX(180deg) rotateZ(90deg);
+    height: var(--ring-svg-size);
+    width: var(--ring-svg-size);
+}
+
+.ring {
+    fill: transparent;
+    stroke-width: var(--ring-stroke-size);
+    r: var(--ring-radius);
+    cx: calc(var(--ring-svg-size) / 2);
+    cy: calc(var(--ring-svg-size) / 2);
+    stroke: var(--stroke-color);
+    transition: stroke-dasharray 1s linear, stroke-dashoffset 1s linear,
+        stroke 0.3s ease-in-out;
+}
+
+.timer-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(var(--ring-svg-size) - 100px);
+    width: calc(var(--ring-svg-size) - 100px);
+}
+
+.input-time {
+    height: 3rem;
+    width: 3rem;
+    font-family: monospace;
+    font-size: 2.5rem;
+    border: 0.2rem solid hsl(136, 0%, 92%);
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    text-align: center;
+}
+
+.input-time.inactive {
+    pointer-events: none;
+    border: 0;
+}
+
+.timer-body > span {
+    color: #fff;
+    font-size: 3rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.buttons-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.timer-button {
+    width: 30%;
+    margin: 0.25rem auto;
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-size: 1.5rem;
+    background: transparent;
+    color: hsl(136, 0%, 92%);
+    border: 0.2rem solid hsl(136, 0%, 92%);
+    border-radius: 0.2rem;
+    outline: 0;
+    cursor: pointer;
+}
+
+.button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 319px) {
+    :root {
+        --ring-svg-size: 210px;
+    }
+
+    html {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        --ring-svg-size: 350px;
+    }
+
+    html {
+        font-size: 14px;
+    }
+
+    .buttons-section {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .timer-button {
+        margin: 1rem;
+        width: 20%;
+    }
+
+    .input-time {
+        height: 3.5rem;
+        width: 3.5rem;
+        font-size: 3rem;
+    }
+}
