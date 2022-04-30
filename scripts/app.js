@@ -34,6 +34,9 @@ let timerInterval;
 // Stroke offset to add, per second.
 let offsetPerSecond;
 
+const clockTickAudio = new Audio("../media/audio/tick.flac");
+const timerEndAudio = new Audio("../media/audio/timer-end-alarm.mp3");
+
 const pauseTimer = () => {
     // Reset timer
     clearInterval(timerInterval);
@@ -89,8 +92,16 @@ const startTimerCountdown = function () {
 
     // Start up the timer
     timerInterval = setInterval(function () {
-        if (timerDuration < 0) {
+        clockTickAudio.play();
+        timerDuration--;
+
+        if (timerDuration <= 0) {
             // End the timer and clear the interval.
+            timerEndAudio.play();
+            setTimeout(() => {
+                // timerEndAudio.pause();
+                // timerEndAudio.currentTime = 0;
+            }, 900);
             stopTimer();
             return;
         }
@@ -105,7 +116,6 @@ const startTimerCountdown = function () {
         var sec = `${Math.floor((timerDuration % 3600) % 60)}`.padStart(2, "0");
 
         [hoursInput.value, minutesInput.value, secondsInput.value] = [hr, min, sec];
-        timerDuration--;
     }, 1000);
 };
 
@@ -121,7 +131,7 @@ const startTimer = function () {
     ];
 
     timerDuration = inputHours * 3600 + inputMinutes * 60 + inputSeconds;
-    offsetPerSecond = timerDuration + 1;
+    offsetPerSecond = timerDuration - 1;
 
     [hoursInput, minutesInput, secondsInput].forEach((input) => {
         input.classList.add("inactive");
