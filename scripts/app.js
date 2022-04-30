@@ -96,10 +96,6 @@ const startTimerCountdown = function () {
         if (timerDuration <= 0) {
             // End the timer and clear the interval.
             timerEndAudio.play();
-            setTimeout(() => {
-                // timerEndAudio.pause();
-                // timerEndAudio.currentTime = 0;
-            }, 900);
             stopTimer();
             return;
         }
