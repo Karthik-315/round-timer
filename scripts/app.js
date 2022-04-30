@@ -34,8 +34,8 @@ let timerInterval;
 // Stroke offset to add, per second.
 let offsetPerSecond;
 
-const clockTickAudio = new Audio("../media/audio/tick.flac");
-const timerEndAudio = new Audio("../media/audio/timer-end-alarm.mp3");
+const clockTickAudio = new Audio("./media/audio/tick.flac");
+const timerEndAudio = new Audio("./media/audio/timer-end-alarm.mp3");
 
 const pauseTimer = () => {
     // Reset timer
